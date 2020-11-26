@@ -11,27 +11,27 @@
 
 char *read_command(void)
 {
-  char *buffer;
-  size_t buffsize = BUFFSIZE;
-  int c;
+char *buffer;
+size_t buffsize = BUFFSIZE;
+int c;
 
-  buffer = (char *)malloc(buffsize * sizeof(char));
-  if (buffer == NULL)
-    {
-      perror("Unable to allocate buffer");
-      exit(EXIT_FAILURE);
-    }
-  c = getline(&buffer, &buffsize, stdin);
-  if (c == -1)
-    {
-      if (c == EOF)
-	{
-	  free(buffer);
-	  exit(0);
-	}
-      perror("An error ocurred");
-    }
-  return (buffer);
+buffer = (char *)malloc(buffsize * sizeof(char));
+if (buffer == NULL)
+{
+perror("Unable to allocate buffer");
+exit(EXIT_FAILURE);
+}
+c = getline(&buffer, &buffsize, stdin);
+if (c == -1)
+{
+if (c == EOF)
+{
+free(buffer);
+exit(0);
+}
+perror("An error ocurred");
+}
+return (buffer);
 }
 
 /**
@@ -42,32 +42,32 @@ char *read_command(void)
 
 char **split_command(char *buffer)
 {
-  int position = 0, buffsize = TOKEN_BUFFSIZE;
-  char **tokens, *token;
+int position = 0, buffsize = TOKEN_BUFFSIZE;
+char **tokens, *token;
 
-  tokens = malloc(buffsize * sizeof(char *));
-  if (tokens == NULL)
-    {
-      perror("Unable to allocate\n");
-      exit(EXIT_FAILURE);
-    }
-  while (buffer[0] == 32)
-    {
-      buffer++;
-    }
-  if (buffer[0] == '\0')
-    {
-      free(buffer);
-      return (NULL);
-    }
-  token = strtok(buffer, TOKEN_DELIM);
-  while (token != NULL)
-    {
-      tokens[position++] = token;
-      token = strtok(NULL, TOKEN_DELIM);
-    }
-  tokens[position] = NULL;
-  return (tokens);
+tokens = malloc(buffsize * sizeof(char *));
+if (tokens == NULL)
+{
+perror("Unable to allocate\n");
+exit(EXIT_FAILURE);
+}
+while (buffer[0] == 32)
+{
+buffer++;
+}
+if (buffer[0] == '\0')
+{
+free(buffer);
+return (NULL);
+}
+token = strtok(buffer, TOKEN_DELIM);
+while (token != NULL)
+{
+tokens[position++] = token;
+token = strtok(NULL, TOKEN_DELIM);
+}
+tokens[position] = NULL;
+return (tokens);
 }
 
 /**
@@ -82,40 +82,40 @@ char **split_command(char *buffer)
 
 int exc_argument(char **command, char *path, char *buffer, int tty, int flag)
 {
-  pid_t pid;
-  int status, outstatus = 0;
+pid_t pid;
+int status, outstatus = 0;
 
-  (void)outstatus;
-  pid = fork();
-  if (pid < 0)
-    perror("Error");
-  if (pid == 0)
-    {
-      if (flag == TRUE)
-	{
-	  if (execve(command[0], command, environ) == -1)
-	    {
-	      check1(command, path, buffer, tty, flag);
-	    }
-	}
-      else
-	{
-	  if (execve(path, command, environ) == -1)
-	    {
-	      check2(command, path, buffer, tty, flag);
-	    }
-	}
-    }
-  else
-    {
-      wait(&status);
-      if (WIFEXITED(status))
-	outstatus = WEXITSTATUS(status);
-    }
-  if (tty == TRUE)
-    return (0);
-  clean_memory(command, path, buffer, flag);
-  return (1);
+(void)outstatus;
+pid = fork();
+if (pid < 0)
+perror("Error");
+if (pid == 0)
+{
+if (flag == TRUE)
+{
+if (execve(command[0], command, environ) == -1)
+{
+check1(command, path, buffer, tty, flag);
+}
+}
+else
+{
+if (execve(path, command, environ) == -1)
+{
+check2(command, path, buffer, tty, flag);
+}
+}
+}
+else
+{
+wait(&status);
+if (WIFEXITED(status))
+outstatus = WEXITSTATUS(status);
+}
+if (tty == TRUE)
+return (0);
+clean_memory(command, path, buffer, flag);
+return (1);
 }
 
 /**
@@ -126,18 +126,18 @@ int exc_argument(char **command, char *path, char *buffer, int tty, int flag)
 
 int is_builtin(char *token)
 {
-  int i = 0;
-  op_t options[] = {
-    {"exit", exit_func}, {"env", env_func}, {"cd", cd_func}, {NULL, NULL}
-  };
+int i = 0;
+op_t options[] = {
+{"exit", exit_func}, {"env", env_func}, {"cd", cd_func}, {NULL, NULL}
+};
 
-  while (options[i].cmd != NULL)
-    {
-      if ((_strcmp(token, options[i].cmd)) == 0)
-	{
-	  return (TRUE);
-	}
-      i++;
-    }
-  return (FALSE);
+while (options[i].cmd != NULL)
+{
+if ((_strcmp(token, options[i].cmd)) == 0)
+{
+return (TRUE);
+}
+i++;
+}
+return (FALSE);
 }
