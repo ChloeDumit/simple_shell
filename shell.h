@@ -45,7 +45,7 @@ void check2(char **, char *, char *, int, int);
  */
 typedef struct op
 {
-  char *cmd;
-  int (*func)(char **, int *);
+char *cmd;
+int (*func)(char **, int *);
 } op_t;
 #endif
