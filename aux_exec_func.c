@@ -10,21 +10,21 @@
  */
 void check1(char **command, char *path, char *buffer, int tty, int flag)
 {
-  (void) tty;
+(void) tty;
 
-  if (command[0][0] == '/')
-    {
-      print_string("-hsh: /: is a directory\n");
-      clean_memory(command, path, buffer, flag);
-      exit(126);
-    }
-  else
-    {
-      print_string(command[0]);
-      print_string(": command not found\n");
-      clean_memory(command, path, buffer, flag);
-      exit(127);
-    }
+if (command[0][0] == '/')
+{
+print_string("-hsh: /: is a directory\n");
+clean_memory(command, path, buffer, flag);
+exit(126);
+}
+else
+{
+print_string(command[0]);
+print_string(": command not found\n");
+clean_memory(command, path, buffer, flag);
+exit(127);
+}
 }
 
 /**
@@ -37,19 +37,19 @@ void check1(char **command, char *path, char *buffer, int tty, int flag)
  */
 void check2(char **command, char *path, char *buffer, int tty, int flag)
 {
-  (void) tty;
+(void) tty;
 
-  if (command[0][0] == '/')
-    {
-      print_string("-hsh: /: is a directory\n");
-      clean_memory(command, path, buffer, flag);
-      exit(126);
-    }
-  else
-    {
-      print_string(command[0]);
-      print_string(": command not found\n");
-      clean_memory(command, path, buffer, flag);
-      exit(127);
-    }
+if (command[0][0] == '/')
+{
+print_string("-hsh: /: is a directory\n");
+clean_memory(command, path, buffer, flag);
+exit(126);
+}
+else
+{
+print_string(command[0]);
+print_string(": command not found\n");
+clean_memory(command, path, buffer, flag);
+exit(127);
+}
 }
