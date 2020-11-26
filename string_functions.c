@@ -11,9 +11,9 @@ int _strlen(char *s)
 {
   int i = 0;
 
-  while (*(s + i) != 0)
-    i++;
-  return (i);
+while (*(s + i) != 0)
+i++;
+return (i);
 }
 
 /**
@@ -25,14 +25,14 @@ int _strlen(char *s)
 
 int _strcmp(char *s1, char *s2)
 {
-  if (s1 == NULL || s2 == NULL)
-    return (-1);
-  while ((*s1 == *s2)  && (*s1 != '\0'))
-    {
-      s1++;
-      s2++;
-    }
-  return (*s1 - *s2);
+if (s1 == NULL || s2 == NULL)
+return (-1);
+while ((*s1 == *s2)  && (*s1 != '\0'))
+{
+s1++;
+s2++;
+}
+return (*s1 - *s2);
 }
 /**
  * print_string - print a string
@@ -42,19 +42,19 @@ int _strcmp(char *s1, char *s2)
 
 void print_string(char *string)
 {
-  int i = 0, count = 0;
-  char *buffer;
+int i = 0, count = 0;
+char *buffer;
 
-  count = _strlen(string);
-  buffer = (char *)malloc(sizeof(char) * count + 2);
-  while (i < count)
-    {
-      buffer[i] = string[i];
-      i++;
-    }
-  buffer[i] = '\0';
-  write(1, buffer, count);
-  free(buffer);
+count = _strlen(string);
+buffer = (char *)malloc(sizeof(char) * count + 2);
+while (i < count)
+{
+buffer[i] = string[i];
+i++;
+}
+buffer[i] = '\0';
+write(1, buffer, count);
+free(buffer);
 }
 
 /**
@@ -66,19 +66,19 @@ void print_string(char *string)
 
 char *_strcat(char *dest, char *src)
 {
-  int i = 0;
-  int x = 0;
+int i = 0;
+int x = 0;
 
-  while (dest[i] != '\0')
-    {
-      i++;
-    }
-  while (src[x] != '\0')
-    {
-      dest[i] = src[x];
-      x++;
-      i++;
-    }
-  dest[i] = '\0';
-  return (dest);
+while (dest[i] != '\0')
+{
+i++;
+}
+while (src[x] != '\0')
+{
+dest[i] = src[x];
+x++;
+i++;
+}
+dest[i] = '\0';
+return (dest);
 }
