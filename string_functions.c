@@ -1,5 +1,6 @@
 #include "shell.h"
 
+
 /**
  * _strlen - count the leng of s
  * @s: pointer received

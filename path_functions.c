@@ -1,5 +1,6 @@
 #include "shell.h"
 
+
 /**
  * find_path - find the path in the enviroment variables
  * Return: the path

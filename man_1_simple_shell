@@ -1,7 +1,7 @@
 .TH man 1 "25 Nov 2020" "0.1" "simple_shell man page"
 
 .SH NAME
-.B simple_shell
+.B simple_shell.
 - Simple shell made in C to interact with a linux operating system.
 
 .SH SYNOPSIS

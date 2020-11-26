@@ -1,5 +1,6 @@
 #include "shell.h"
 
+
 /**
  * clean_memory - function that clean the memory
  * @command: the command with parameters

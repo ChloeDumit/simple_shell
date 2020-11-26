@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  *check1 - checking
  *@command: command

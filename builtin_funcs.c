@@ -1,5 +1,6 @@
 #include "shell.h"
 
+
 /**
  * exec_builtin - exit of the program and clean the memory
  * @command: the argument command

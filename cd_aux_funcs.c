@@ -1,5 +1,6 @@
 #include "shell.h"
 
+
 /**
  * obtain_home - obtain home from the enviroment variables
  * Return: the home var
